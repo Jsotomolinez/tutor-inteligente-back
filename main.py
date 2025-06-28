@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-from slowapi.errors import RateLimitExceeded
-
+# from slowapi import Limiter, _rate_limit_exceeded_handler
+# from slowapi.util import get_remote_address
+# from slowapi.errors import RateLimitExceeded
+from env_variables import FRONT_END_URL
 from routers.gemini import gemini_router
 
 
+
+# Inicialzar de la app
 app = FastAPI(
     title="Tutor inteligente",
     description="Asistente de IA para la resolución de ejercicios de programación",
@@ -18,26 +20,24 @@ app = FastAPI(
     },
 )
 
-# Limitar las llamadas a la API a 10 por minuto
-# # limiter = Limiter(key_func=get_remote_address)
-# # app.state.limiter = limiter
-# app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 
-
+#Enrutadores
 app.include_router(gemini_router)
 
 
+# Origenes para CORS
 origins = [
-    "http://localhost:3000",
+    FRONT_END_URL,
 ]
 
 
+# Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET"],
+    allow_headers=["multipart/form-data"],
 )

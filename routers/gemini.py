@@ -5,18 +5,16 @@ from helpers.images import encode_image
 from openai import OpenAI
 
 import os
-from dotenv import load_dotenv
+
+from env_variables import GEMINI_API_KEY
+
+
 
 gemini_router = APIRouter(prefix="/gemini", tags=["gemini"])
 
-load_dotenv(".secrets")
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise EnvironmentError("GEMINI_API_KEY environment variable is not set.")
-
 
 client = OpenAI(
-    api_key=api_key,
+    api_key=GEMINI_API_KEY,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
