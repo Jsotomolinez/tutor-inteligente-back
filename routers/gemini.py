@@ -4,7 +4,7 @@ from helpers.images import encode_image
 
 from openai import OpenAI
 
-import os
+
 
 from env_variables import GEMINI_API_KEY
 
@@ -43,12 +43,10 @@ async def get_gemini_response_from_image(
     isFunction: str = Form(...)
 ):
     try:
-        # Leer el archivo recibido
+        # Leer el archivo recibido en memoria
         contents = await file.read()
-        with open("temp_image", "wb") as f:
-            f.write(contents)
-        base64_image = encode_image("temp_image")
-        os.remove("temp_image")
+        # Codificar la imagen en base64 usando la función helpers.images.encode_image
+        base64_image = encode_image(contents)
 
         is_text_file = isTextFile.lower() == 'true'
         is_function = isFunction.lower() == 'true'
