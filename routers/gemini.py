@@ -85,7 +85,9 @@ Si la imagen que se te ha enviado no es un ejercicio de programación, responde 
         return response.choices[0].message.content.replace('\n', '<br />').replace("'''", '').removeprefix('"').removesuffix('"')
 
     except Exception as e:
-        import traceback
-        print('Error en /chat/image:', e)
-        traceback.print_exc()
+        import os
+        if os.getenv("ENV", "development") == "development":
+            import traceback
+            print('Error en /chat/image:', e)
+            traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
