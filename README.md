@@ -16,9 +16,13 @@ Este proyecto es un asistente de inteligencia artificial diseñado para ayudarte
    ```sh
    git clone https://github.com/jsotomolinez/llm-project-1.git
    ```
-2. Instala las dependencias:
+2. Instala las dependencias de producción:
    ```sh
    pip install -r requirements.txt
+   ```
+   Si vas a trabajar en desarrollo, instala también las dependencias adicionales:
+   ```sh
+   pip install -r requirements-dev.txt
    ```
 3. Configura tus variables de entorno en `.secrets`.
 

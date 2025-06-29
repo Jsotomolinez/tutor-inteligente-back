@@ -1,0 +1,5 @@
+colorama==0.4.6
+Deprecated==1.2.18
+tqdm==4.67.1
+dotenv==0.9.9
+python-dotenv==1.1.0
