@@ -2,8 +2,11 @@ import os
 
 # Cargar dotenv solo en desarrollo
 if os.getenv("ENV", "development") == "development":
-    from dotenv import load_dotenv
-    load_dotenv(".env")
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(".env")
+    except ImportError:
+        pass  # No hay problema si dotenv no está instalado en producción
 
 
 # Obtener variables de entorno críticas
