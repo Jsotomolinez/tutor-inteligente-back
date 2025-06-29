@@ -24,7 +24,7 @@ Este proyecto es un asistente de inteligencia artificial diseñado para ayudarte
    ```sh
    pip install -r requirements-dev.txt
    ```
-3. Configura tus variables de entorno en `.secrets`.
+3. Configura tus variables de entorno en `.env`.
 
 ## 🛠️ Uso
 
