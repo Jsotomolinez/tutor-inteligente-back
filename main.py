@@ -50,7 +50,7 @@ def root():
     return "Bienvenido a la API de Tutor inteligente. Visita /docs para la documentación."
 
 
-# Ruta para favicon.ico para evitar 404
+# Ruta para favicon.ico para evitar 404.
 @app.get("/favicon.ico")
 def favicon():
     return Response(status_code=204)
