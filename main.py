@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import PlainTextResponse, Response
 
 # from slowapi import Limiter, _rate_limit_exceeded_handler
 # from slowapi.util import get_remote_address
@@ -41,3 +42,15 @@ app.add_middleware(
     allow_methods=["GET"],
     allow_headers=["multipart/form-data"],
 )
+
+
+# Ruta raíz para evitar 404 en '/'
+@app.get("/", response_class=PlainTextResponse)
+def root():
+    return "Bienvenido a la API de Tutor inteligente. Visita /docs para la documentación."
+
+
+# Ruta para favicon.ico para evitar 404
+@app.get("/favicon.ico")
+def favicon():
+    return Response(status_code=204)
