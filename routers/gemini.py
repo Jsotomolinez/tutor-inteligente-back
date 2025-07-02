@@ -70,6 +70,7 @@ Si la pregunta que se te hace no es de progrmación, responde con "Lo siento per
 {"El problema requiere que menejes archivos de texto." if is_text_file else "El problema no requiere que manejes archivos de texto."}
 {"El problema requiere que manejes funciones." if is_function else "El problema no requiere que manejes funciones, no definas ninguna."}
 Si la imagen que se te ha enviado no es un ejercicio de programación, responde con "Lo siento pero me diseñaron para responder preguntas de programación".
+No olvides que debes escribir los comentarios en español y que incluso la primera línea, en donde dices el nombre del ejercicio debe ser un comentario.
 '''
                         },
                         {
@@ -82,7 +83,7 @@ Si la imagen que se te ha enviado no es un ejercicio de programación, responde 
                 }
             ],
         )
-        return response.choices[0].message.content.replace('\n', '<br />').replace("'''", '').removeprefix('"').removesuffix('"')
+        return response.choices[0].message.content.replace('\n', '<br />'*3).replace("'''", '').removeprefix('"').removesuffix('"')
 
     except Exception as e:
         import os
